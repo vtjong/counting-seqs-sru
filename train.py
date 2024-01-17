@@ -49,7 +49,7 @@ def evaluate_model(model, test_loader, criterion, wandb_run):
 
             print("input", input)
             print("target", target.item())
-            print("output", round(output.item()))
+            print("output", output.item())
 
 if __name__ == '__main__':
     wandb.init(project='counting-model')

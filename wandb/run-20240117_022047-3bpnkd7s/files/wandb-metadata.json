@@ -1,0 +1,45 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.11.4",
+    "heartbeatAt": "2024-01-17T07:20:48.572376",
+    "startedAt": "2024-01-17T07:20:47.319333",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/valenetjong/counting-seqs-sru/train.py",
+    "codePathLocal": "train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/vtjong/counting-seqs-sru.git",
+        "commit": "dfad57c29955b3a44164a296480d666e4a91ac04"
+    },
+    "email": "vyt3@cornell.edu",
+    "root": "/Users/valenetjong/counting-seqs-sru",
+    "host": "Valenes-MacBook-Pro.local",
+    "username": "valenetjong",
+    "executable": "/Users/valenetjong/opt/anaconda3/envs/nlp-m/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 2400,
+        "min": 2400,
+        "max": 2400
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2400,
+            "min": 2400,
+            "max": 2400
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 460.4317207336426,
+            "used": 376.06822967529297
+        }
+    },
+    "memory": {
+        "total": 8.0
+    }
+}

@@ -1,0 +1,160 @@
+Epoch [1/100], Loss: 5159.1377
+Epoch [2/100], Loss: 4377.6841
+Epoch [3/100], Loss: 1831.9988
+Epoch [4/100], Loss: 2610.8711
+Epoch [5/100], Loss: 1720.0778
+Epoch [6/100], Loss: 378.5683
+Epoch [7/100], Loss: 4.8130
+Epoch [8/100], Loss: 14.8761
+Epoch [9/100], Loss: 4.8967
+Epoch [10/100], Loss: 2.6959
+Epoch [11/100], Loss: 0.6592
+Epoch [12/100], Loss: 0.8662
+Epoch [13/100], Loss: 0.3195
+Epoch [14/100], Loss: 0.2996
+Epoch [15/100], Loss: 0.0305
+Epoch [16/100], Loss: 0.0735
+Epoch [17/100], Loss: 0.0592
+Epoch [18/100], Loss: 0.1940
+Epoch [19/100], Loss: 0.0581
+Epoch [20/100], Loss: 0.0922
+Epoch [21/100], Loss: 2.1273
+Epoch [22/100], Loss: 0.0136
+Epoch [23/100], Loss: 1.9405
+Epoch [24/100], Loss: 0.0085
+Epoch [25/100], Loss: 0.0134
+Epoch [26/100], Loss: 0.0049
+Epoch [27/100], Loss: 0.0071
+Epoch [28/100], Loss: 0.0220
+Epoch [29/100], Loss: 0.0108
+Epoch [30/100], Loss: 0.0036
+Epoch [31/100], Loss: 0.0009
+Epoch [32/100], Loss: 0.0061
+Epoch [33/100], Loss: 0.0042
+Epoch [34/100], Loss: 0.0013
+Epoch [35/100], Loss: 0.0027
+Epoch [36/100], Loss: 0.0109
+Epoch [37/100], Loss: 0.0014
+Epoch [38/100], Loss: 0.0015
+Epoch [39/100], Loss: 0.0002
+Epoch [40/100], Loss: 0.0005
+Epoch [41/100], Loss: 0.0016
+Epoch [42/100], Loss: 0.0002
+Epoch [43/100], Loss: 0.0011
+Epoch [44/100], Loss: 0.0003
+Epoch [45/100], Loss: 0.0002
+Epoch [46/100], Loss: 0.0022
+Epoch [47/100], Loss: 0.0001
+Epoch [48/100], Loss: 0.0116
+Epoch [49/100], Loss: 0.0000
+Epoch [50/100], Loss: 0.0000
+Epoch [51/100], Loss: 0.0000
+Epoch [52/100], Loss: 0.0000
+Epoch [53/100], Loss: 0.0015
+Epoch [54/100], Loss: 0.0000
+Epoch [55/100], Loss: 0.0114
+Epoch [56/100], Loss: 0.0080
+Epoch [57/100], Loss: 0.0032
+Epoch [58/100], Loss: 0.0094
+Epoch [59/100], Loss: 0.0001
+Epoch [60/100], Loss: 0.0140
+Epoch [61/100], Loss: 0.0001
+Epoch [62/100], Loss: 0.0002
+Epoch [63/100], Loss: 0.0000
+Epoch [64/100], Loss: 0.0000
+Epoch [65/100], Loss: 0.0000
+Epoch [66/100], Loss: 0.0001
+Epoch [67/100], Loss: 0.0000
+Epoch [68/100], Loss: 0.0000
+Epoch [69/100], Loss: 0.0001
+Epoch [70/100], Loss: 0.0003
+Epoch [71/100], Loss: 0.0032
+Epoch [72/100], Loss: 0.0000
+Epoch [73/100], Loss: 0.0000
+Epoch [74/100], Loss: 0.0001
+Epoch [75/100], Loss: 0.0001
+Epoch [76/100], Loss: 0.0562
+Epoch [77/100], Loss: 0.0000
+Epoch [78/100], Loss: 0.0000
+Epoch [79/100], Loss: 0.0002
+Epoch [80/100], Loss: 0.0000
+Epoch [81/100], Loss: 0.0029
+Epoch [82/100], Loss: 0.0268
+Epoch [83/100], Loss: 0.0000
+Epoch [84/100], Loss: 0.0198
+Epoch [85/100], Loss: 0.0000
+Epoch [86/100], Loss: 0.0016
+Epoch [87/100], Loss: 0.0000
+Epoch [88/100], Loss: 0.0001
+Epoch [89/100], Loss: 0.0089
+Epoch [90/100], Loss: 0.0000
+Epoch [91/100], Loss: 0.0012
+Epoch [92/100], Loss: 0.0000
+Epoch [93/100], Loss: 0.0013
+Epoch [94/100], Loss: 0.0000
+Epoch [95/100], Loss: 0.0001
+Epoch [96/100], Loss: 0.0007
+Epoch [97/100], Loss: 0.0001
+Epoch [98/100], Loss: 0.0000
+Epoch [99/100], Loss: 0.0000
+Epoch [100/100], Loss: 0.0000
+input tensor([[[64., 65., 66.]]])
+target 67.0
+output 67
+input tensor([[[39., 40., 41.]]])
+target 42.0
+output 42
+input tensor([[[32., 33., 34.]]])
+target 35.0
+output 35
+input tensor([[[2., 3., 4.]]])
+target 5.0
+output 5
+input tensor([[[92., 93., 94.]]])
+target 95.0
+output 95
+input tensor([[[91., 92., 93.]]])
+target 94.0
+output 94
+input tensor([[[44., 45., 46.]]])
+target 47.0
+output 47
+input tensor([[[22., 23., 24.]]])
+target 25.0
+output 25
+input tensor([[[14., 15., 16.]]])
+target 17.0
+output 17
+input tensor([[[90., 91., 92.]]])
+target 93.0
+output 93
+input tensor([[[3., 4., 5.]]])
+target 6.0
+output 6
+input tensor([[[66., 67., 68.]]])
+target 69.0
+output 69
+input tensor([[[48., 49., 50.]]])
+target 51.0
+output 51
+input tensor([[[33., 34., 35.]]])
+target 36.0
+output 36
+input tensor([[[45., 46., 47.]]])
+target 48.0
+output 48
+input tensor([[[0., 1., 2.]]])
+target 3.0
+output 2
+input tensor([[[54., 55., 56.]]])
+target 57.0
+output 57
+input tensor([[[20., 21., 22.]]])
+target 23.0
+output 23
+input tensor([[[84., 85., 86.]]])
+target 87.0
+output 87
+input tensor([[[16., 17., 18.]]])
+target 19.0
+output 19
