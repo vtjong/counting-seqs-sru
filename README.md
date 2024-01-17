@@ -1,17 +1,34 @@
-# sru
+# Counting Sequences with SRUs
 
-An implementation of SRU in Section 2 of "When Attention Meets Fast Recurrence:
-Training Language Models with Reduced Compute", with parameter
-initializations from original SRU paper, "Simple Recurrent Units for Highly
-Parallelizable Recurrence".
+This repository contains an implementation of the Simple Recurrent Unit (SRU) as described in "When Attention Meets Fast Recurrence: Training Language Models with Reduced Compute". The implementation follows the parameter initializations from the original SRU paper, "Simple Recurrent Units for Highly Parallelizable Recurrence".
 
-## Experiment
+## Experiment Overview
 
-A counting model, consisting of SRU (5 layers, with input size of 3, hidden sizes of 9 per hidden layer), and 1 final fully-connected layer is trained on an input sequence of three numbers to output the subsequent number. Utilizing a batch size of 6, a learning rate of 1e-3 (Adam optimizer), a random train-test split of 80-20 is completed and 10 trials are run, with the following results:
-wandb: Test Accuracy 99.994
-wandb: Test Loss 3e-05
-wandb: Train Loss 0.00075
+The experiment involves training a counting model using SRU. The model architecture includes:
 
-No extensive hyperparameter search was conducted, as results were already good.
-A model without the fully-connected layer was also considered, but it fared worse
-due to only having a single hidden neuron in each hidden layer.
+- **5 layers of SRU**: Each with an input size of 3 and 9 hidden neurons per hidden layer.
+- **A final fully-connected layer**: To predict the output based on the SRU layers' representations.
+
+The model is trained to predict the subsequent number in a sequence given three input numbers.
+
+### Training Details
+
+- **Batch Size**: 6
+- **Learning Rate**: 1e-3 (Using the Adam optimizer)
+- **Dataset Split**: Random train-test split with 80% training data and 20% testing data.
+
+### Trials
+
+A total of 10 trials were conducted, yielding the following results:
+
+```
+Test Accuracy: 99.994\%
+Test Loss: 3e-05
+Train Loss: 0.00075
+
+```
+
+### Observations
+
+- The model demonstrates excellent performance without the need for an extensive hyperparameter search.
+- An alternative model architecture without the fully-connected layer was evaluated but performed poorly. This performance drop is attributed to the limited capacity with only a single hidden neuron in each hidden layer.
