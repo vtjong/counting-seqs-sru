@@ -6,7 +6,7 @@ This repository contains an implementation of the Simple Recurrent Unit (SRU) as
 
 The experiment involves training a counting model using SRU. The model architecture includes:
 
-- **5 layers of SRU**: Each with an input size of 3 and 9 hidden neurons per hidden layer.
+- **5 layers of SRU**: Input size of 3 for first layer and hidden size of 9.
 - **A final fully-connected layer**: To predict the output based on the SRU layers' representations.
 
 The model is trained to predict the subsequent number in a sequence given three input numbers.
@@ -31,4 +31,4 @@ Train Loss: 0.00075
 ### Observations
 
 - The model demonstrates excellent performance without the need for an extensive hyperparameter search.
-- An alternative model architecture without the fully-connected layer was evaluated but performed poorly. This performance drop is attributed to the limited capacity with only a single hidden neuron in each hidden layer.
+- An alternative model architecture without the fully-connected layer was evaluated but performed worse. This performance drop is attributed to the limited capacity with only a single hidden neuron in each hidden layer. With 16 hidden layers, it performs comparatively.
