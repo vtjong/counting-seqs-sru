@@ -10,7 +10,7 @@ The experiment involves training a counting model using SRU. The model architect
 - **A final fully-connected layer**: To predict the output based on the SRU layers' representations.
 
 The model is trained to predict the subsequent number in a sequence given three input numbers.
-To run, navigate to `train.py`.
+To run, navigate to `train.py`. We forego a word embedding layer as we're operating on input sequences and are not using encoding (see Discussion section for reasoning.)
 
 ### Training Details
 
@@ -95,7 +95,7 @@ target 5.0
 output 5.037868499755859
 ```
 
-### Observations
+### Discussion
 
 - The model demonstrates excellent performance without the need for an extensive hyperparameter search.
 - An alternative model architecture without the fully-connected layer was evaluated but performed worse. This performance drop is attributed to the limited capacity with only a single hidden neuron in each hidden layer. With 16 hidden layers, it performs comparatively.
