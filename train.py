@@ -2,8 +2,9 @@ import argparse
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, random_split
-from dataset import CountingDataset
+from dataset import CountingDataset, CountingDatasetEmbeddings
 from models.counting import CountingModel
+from models.sru import SRU
 import wandb
 
 def load_data(count_len, batch_size):
