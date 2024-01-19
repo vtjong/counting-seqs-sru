@@ -91,9 +91,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='SRU Counting Model')
     parser.add_argument('--model', type=str, default="sru", help='SRU or Counting model')
     parser.add_argument('--output_size', type=int, default=1, help='Output size')
-    parser.add_argument('--learning_rate', type=float, default=1e-3, help='Learning rate')
+    parser.add_argument('--learning_rate', type=float, default=1e-4, help='Learning rate')
     parser.add_argument('--batch_size', type=int, default=6, help='Batch size')
-    parser.add_argument('--num_epochs', type=int, default=100, help='Number of epochs')
+    parser.add_argument('--num_epochs', type=int, default=200, help='Number of epochs')
     parser.add_argument('--count_len', type=int, default=100, help='Length of the counting sequence')
     
     args = parser.parse_args()

@@ -67,6 +67,7 @@ class SRUCell(nn.Module):
             
             if self.layer_norm:
                 h = nn.LayerNorm(self.output_size)(h)
+                # c_t = nn.LayerNorm(self.hidden_size)(c_t)
             return h, c_t
 
         return forward_(self, U, self.V, input, c0)

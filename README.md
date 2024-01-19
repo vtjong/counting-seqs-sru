@@ -18,9 +18,9 @@ Both models are trained to predict the subsequent number in a sequence given thr
 
 ### Training Details
 
-- **Number of Epochs**: 100
+- **Number of Epochs**: 100 (second), 200 (first)
 - **Batch Size**: 6
-- **Learning Rate**: 1e-3 (Using the Adam optimizer)
+- **Learning Rate**: 1e-3 (second), 1e-4 (first) (Using the Adam optimizer)
 - **Dataset Split**: Random train-test split with 80% training data and 20% testing data.
 - **Loss**: MSE Loss (first model), CE Loss (second model))
 
@@ -29,86 +29,85 @@ Both models are trained to predict the subsequent number in a sequence given thr
 Model 1:
 
 ```
-input tensor([[81., 82., 83.]])
-target tensor([[82., 83., 84.]])
-output tensor([[82, 83, 84]])
-loss 2.281102388224099e-05
-input tensor([[7., 8., 9.]])
-target tensor([[ 8.,  9., 10.]])
-output tensor([[ 8,  9, 10]])
-loss 2.49348086072132e-05
+input tensor([[33., 34., 35.]])
+target tensor([[34., 35., 36.]])
+output tensor([[34, 35, 36]])
+loss 0.00016859466268215328
+input tensor([[76., 77., 78.]])
+target tensor([[77., 78., 79.]])
+output tensor([[77, 78, 79]])
+loss 0.00042785381083376706
 input tensor([[31., 32., 33.]])
 target tensor([[32., 33., 34.]])
 output tensor([[32, 33, 34]])
-loss 2.6588484615786e-05
-input tensor([[87., 88., 89.]])
-target tensor([[88., 89., 90.]])
-output tensor([[88, 89, 90]])
-loss 4.603876732289791e-05
+loss 0.00010597872460493818
+input tensor([[40., 41., 42.]])
+target tensor([[41., 42., 43.]])
+output tensor([[41, 42, 43]])
+loss 0.00012463287566788495
+input tensor([[1., 2., 3.]])
+target tensor([[2., 3., 4.]])
+output tensor([[2, 3, 4]])
+loss 0.00016336393309757113
+input tensor([[2., 3., 4.]])
+target tensor([[3., 4., 5.]])
+output tensor([[ 3,  4, 49]])
+loss 0.0009431123617105186
+input tensor([[79., 80., 81.]])
+target tensor([[80., 81., 82.]])
+output tensor([[80, 81, 82]])
+loss 7.131805614335462e-05
+input tensor([[42., 43., 44.]])
+target tensor([[43., 44., 45.]])
+output tensor([[43, 44, 45]])
+loss 0.00011074219219153747
+input tensor([[45., 46., 47.]])
+target tensor([[46., 47., 48.]])
+output tensor([[46, 47, 48]])
+loss 2.612705429783091e-05
+input tensor([[58., 59., 60.]])
+target tensor([[59., 60., 61.]])
+output tensor([[59, 60, 61]])
+loss 0.00010467324318597093
+input tensor([[95., 96., 97.]])
+target tensor([[96., 97., 98.]])
+output tensor([[96, 97, 16]])
+loss 0.01509164460003376
+input tensor([[51., 52., 53.]])
+target tensor([[52., 53., 54.]])
+output tensor([[52, 53, 54]])
+loss 0.00012654939200729132
+input tensor([[7., 8., 9.]])
+target tensor([[ 8.,  9., 10.]])
+output tensor([[ 8,  9, 10]])
+loss 0.00010569680307526141
 input tensor([[96., 97., 98.]])
 target tensor([[97., 98., 99.]])
-output tensor([[97, 98, 63]])
-loss 0.01914927549660206
-input tensor([[3., 4., 5.]])
-target tensor([[4., 5., 6.]])
-output tensor([[4, 5, 6]])
-loss 1.5907555280136876e-05
-input tensor([[34., 35., 36.]])
-target tensor([[35., 36., 37.]])
-output tensor([[35, 36, 37]])
-loss 2.6028270440292545e-05
-input tensor([[73., 74., 75.]])
-target tensor([[74., 75., 76.]])
-output tensor([[74, 75, 76]])
-loss 3.282587567809969e-05
-input tensor([[28., 29., 30.]])
-target tensor([[29., 30., 31.]])
-output tensor([[29, 30, 31]])
-loss 2.0435010810615495e-05
-input tensor([[52., 53., 54.]])
-target tensor([[53., 54., 55.]])
-output tensor([[53, 54, 55]])
-loss 3.404177914489992e-05
-input tensor([[68., 69., 70.]])
-target tensor([[69., 70., 71.]])
-output tensor([[69, 70, 71]])
-loss 2.4823764761094935e-05
-input tensor([[75., 76., 77.]])
-target tensor([[76., 77., 78.]])
-output tensor([[76, 77, 78]])
-loss 4.977876233169809e-05
-input tensor([[65., 66., 67.]])
-target tensor([[66., 67., 68.]])
-output tensor([[66, 67, 68]])
-loss 1.2659546882787254e-05
-input tensor([[55., 56., 57.]])
-target tensor([[56., 57., 58.]])
-output tensor([[56, 57, 58]])
-loss 2.1304467736626975e-05
-input tensor([[71., 72., 73.]])
-target tensor([[72., 73., 74.]])
-output tensor([[72, 73, 74]])
-loss 3.13459531753324e-05
-input tensor([[17., 18., 19.]])
-target tensor([[18., 19., 20.]])
-output tensor([[18, 19, 20]])
-loss 1.9536642867024057e-05
-input tensor([[48., 49., 50.]])
-target tensor([[49., 50., 51.]])
-output tensor([[49, 50, 51]])
-loss 1.5370242181234062e-05
-input tensor([[0., 1., 2.]])
-target tensor([[1., 2., 3.]])
-output tensor([[75,  2,  3]])
-loss 0.009817713871598244
-input tensor([[60., 61., 62.]])
-target tensor([[61., 62., 63.]])
-output tensor([[61, 62, 63]])
-loss 1.8827344320015982e-05
-input tensor([[84., 85., 86.]])
-target tensor([[85., 86., 87.]])
-output tensor([[85, 86, 87]])
-loss 1.8344977434026077e-05
+output tensor([[97, 16, 86]])
+loss 0.030178433284163475
+input tensor([[66., 67., 68.]])
+target tensor([[67., 68., 69.]])
+output tensor([[67, 68, 69]])
+loss 6.203942029969767e-05
+input tensor([[61., 62., 63.]])
+target tensor([[62., 63., 64.]])
+output tensor([[62, 63, 64]])
+loss 0.0002770077553577721
+input tensor([[20., 21., 22.]])
+target tensor([[21., 22., 23.]])
+output tensor([[21, 22, 23]])
+loss 3.838343036477454e-05
+input tensor([[12., 13., 14.]])
+target tensor([[13., 14., 15.]])
+output tensor([[13, 14, 15]])
+loss 5.434556442196481e-05
+input tensor([[91., 92., 93.]])
+target tensor([[92., 93., 94.]])
+output tensor([[92, 93, 94]])
+loss 7.240963168442249e-05
+input tensor([[53., 54., 55.]])
+target tensor([[54., 55., 56.]])
+output tensor([[54, 55, 56]])
 ```
 
 Model 2:
@@ -188,4 +187,4 @@ output 5.037868499755859
 ### Discussion
 
 - The models demonstrate decent performance pre-hyperparameter search.
-- The first model uses SRU as a language model (sequence-to-sequence) and trains on the one-hot-encoding of the 3-number sequence. The second uses SRU + a fully-connected layer and trains on the raw number sequence. The former model, without the fully-connected layer, makes more errors than the one with. Fine-tuning of the model would certainly result in higher accuracy values. However, considering number of mistakes is small across runs, this demonstrates the SRU's ability to "learn how to count."
+- The first model uses SRU as a language model (sequence-to-sequence) and trains on the one-hot-encoding of the 3-number sequence. The second uses SRU + a fully-connected layer and trains on the raw number sequence. The former model, without the fully-connected layer, makes more errors than the one with if trained with 100 epochs and a learning rate of 1e-3. Fine-tuning of the model (200 epochs, 1e-4 learning rates) results in 100% accuracy values. This demonstrates SRU's ability to "learn how to count."
