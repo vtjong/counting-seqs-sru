@@ -25,7 +25,7 @@ class CountingDatasetEmbeddings(Dataset):
     def __len__(self):
         return self.count_len - 3
     
-    def encode(sequence, dict_size, seq_len):
+    def encode(self, sequence, dict_size, seq_len):
         # Create an array of zeros with shape (seq_len, dict_size)
         features = np.zeros((seq_len, dict_size), dtype=np.float32)
         
@@ -46,5 +46,5 @@ class CountingDatasetEmbeddings(Dataset):
             'original inputs': torch.Tensor(seq),
             'original labels': torch.Tensor(label),
             'encoded inputs': torch.from_numpy(encoded_input),
-            'encoded outputs': torch.from_numpy(encoded_output)
+            'encoded labels': torch.from_numpy(encoded_output)
         }

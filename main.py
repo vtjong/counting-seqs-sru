@@ -6,6 +6,7 @@ from dataset import CountingDataset, CountingDatasetEmbeddings
 from models.counting import CountingModel
 from models.sru import SRU
 import wandb
+import sys
 
 def load_data(count_len, batch_size):
     dataset = CountingDataset(count_len)
@@ -18,7 +19,19 @@ def load_data(count_len, batch_size):
     
     return train_loader, test_loader
 
-def train_model(model, train_loader, num_epochs, criterion, optimizer, wandb_run):
+def load_embedded_data(count_len, batch_size):
+    dataset = CountingDatasetEmbeddings(count_len)
+    train_size = int(0.8 * len(dataset))
+    test_size = len(dataset) - train_size
+    train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
+
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False)
+    
+    return train_loader, test_loader
+
+
+def train_counting_model(model, train_loader, num_epochs, criterion, optimizer, wandb_run):
     for epoch in range(num_epochs):
         for batch in train_loader:
             input = batch['data'].permute(1, 0, 2)
@@ -34,10 +47,9 @@ def train_model(model, train_loader, num_epochs, criterion, optimizer, wandb_run
         wandb_run.log({"Train Loss": loss.item()})
         print(f'Epoch [{epoch + 1}/{num_epochs}], Loss: {loss.item():.4f}')
 
-
-def evaluate_model(model, test_loader, criterion, wandb_run):
+def evaluate_counting_model(model, test_loader, criterion, wandb_run):
     model.eval()
-    
+
     with torch.no_grad():
         for batch in test_loader:
             input = batch['data'].permute(1, 0, 2)
@@ -53,24 +65,25 @@ def evaluate_model(model, test_loader, criterion, wandb_run):
             print("output", output.item())
 
 if __name__ == '__main__':
-    wandb.init(project='counting-model')
     parser = argparse.ArgumentParser(description='SRU Counting Model')
+    parser.add_argument('--model', type=str, default="sru", help='SRU or Counting model')
     parser.add_argument('--input_size', type=int, default=3, help='Input size')
-    parser.add_argument('--hidden_size', type=int, default=9, help='Hidden size')
+    parser.add_argument('--hidden_size', type=int, default=3, help='Hidden size')
     parser.add_argument('--output_size', type=int, default=1, help='Output size')
     parser.add_argument('--learning_rate', type=float, default=1e-3, help='Learning rate')
-    parser.add_argument('--batch_size', type=int, default=6, help='Batch size')
+    parser.add_argument('--batch_size', type=int, default=1, help='Batch size')
     parser.add_argument('--num_epochs', type=int, default=100, help='Number of epochs')
-    parser.add_argument('--count_len', type=int, default=100, help='Length of the counting sequence')
+    parser.add_argument('--count_len', type=int, default=6, help='Length of the counting sequence')
     args = parser.parse_args()
 
-    model = CountingModel(args.input_size, args.hidden_size, args.output_size)
-    criterion = nn.MSELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)
+    if args.model == "counting":
+        wandb.init(project='counting-model') 
+        model = CountingModel(args.input_size, args.hidden_size, args.output_size)
+        criterion = nn.MSELoss()
+        optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)
+        train_loader, test_loader = load_data(args.count_len, args.batch_size)
 
-    train_loader, test_loader = load_data(args.count_len, args.batch_size)
-
-    train_model(model, train_loader, args.num_epochs, criterion, optimizer, wandb.run)
-    evaluate_model(model, test_loader, criterion, wandb.run)
-
-    wandb.save("model.pth")
+        train_counting_model(model, train_loader, args.num_epochs, criterion, optimizer, wandb.run)
+        evaluate_counting_model(model, test_loader, criterion, wandb.run)
+        wandb.save("model.pth")
+    
