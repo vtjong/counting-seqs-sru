@@ -18,6 +18,7 @@ Both models are trained to predict the subsequent number in a sequence given thr
 
 ### Training Details
 
+- **Number of Epochs**: 100
 - **Batch Size**: 6
 - **Learning Rate**: 1e-3 (Using the Adam optimizer)
 - **Dataset Split**: Random train-test split with 80% training data and 20% testing data.
