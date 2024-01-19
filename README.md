@@ -10,7 +10,7 @@ The experiment involves training a counting model using SRU. The model architect
 - **A final fully-connected layer**: To predict the output based on the SRU layers' representations.
 
 The model is trained to predict the subsequent number in a sequence given three input numbers.
-To run, navigate to `train.py`. We forego a word embedding layer as we're operating on input sequences and are not using encoding (see Discussion section for reasoning.)
+To run, navigate to `main.py`. We forego a word embedding layer as we're operating on input sequences and are not using encoding (see Discussion section for reasoning.)
 
 ### Training Details
 
