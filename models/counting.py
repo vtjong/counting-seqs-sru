@@ -8,6 +8,6 @@ class CountingModel(nn.Module):
         self.fc = nn.Linear(hidden_size, output_size)
 
     def forward(self, x):
-        out, _ = self.sru(x)
+        out, hid = self.sru(x)
         out = self.fc(out)
         return out

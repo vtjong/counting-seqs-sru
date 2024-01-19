@@ -5,12 +5,13 @@ import torch.nn.init as init
 import torch.nn as nn
 
 class SRUCell(nn.Module):
-    def __init__(self, input_size, hidden_size, dropout=0.0):
+    def __init__(self, input_size, hidden_size, layer_norm=False, dropout=0.0):
         super(SRUCell, self).__init__()
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.output_size = hidden_size
         self.p = dropout
+        self.layer_norm = layer_norm
 
         self.init_parameters_()
         self.reset_parameters()
@@ -63,6 +64,9 @@ class SRUCell(nn.Module):
                 h_t = self.dropout(B, d, (c_t.tanh() - U[l, ..., 3]) * r_t)
                 h_t += U[l, ..., 3]
                 h[l, ...] = h_t
+            
+            if self.layer_norm:
+                h = nn.LayerNorm(self.output_size)(h)
             return h, c_t
 
         return forward_(self, U, self.V, input, c0)

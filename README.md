@@ -4,28 +4,113 @@ This repository contains an implementation of the Simple Recurrent Unit (SRU) as
 
 ## Experiment Overview
 
-The experiment involves training a counting model using SRU. Two model architectures were considered. The first includes:
+The experiment involves training a counting model using SRU. Two model architectures were considered.
+The first uses a sequence-to-sequence RNN as language model approach:
 
-- **5 layers of SRU**: Input and output sizes or 3, with sequence length = vocab size (one hot encoding)
+- **5 layers of SRU**: Input and output sizes equal to the length of the vocab size (one hot encoding); sequence length = 3.
 
-The second model architecture includes:
+The second model architecture uses the RNN in conjunction with a fully-connected layer:
 
-- **5 layers of SRU**: Input size of 3 for first layer and hidden size of 9.
+- **5 layers of SRU**: Input size of 3 for first layer and hidden size of 9 (treat the entire 3-number sequence as 3 features of a single time-step sequence, which does not truly make use of main benefits of RNN, but works very well, likely due to the fc layer at the end).
 - **A final fully-connected layer**: To predict the output based on the SRU layers' representations.
 
-The first model was deprecated (see Discussion section for comparison of the two models). The second model is the chosen model architecture and is trained to predict the subsequent number in a sequence given three input numbers.
-To run, navigate to `main.py`.
+Both models are trained to predict the subsequent number in a sequence given three input numbers. To run, navigate to `main.py`.
 
 ### Training Details
 
 - **Batch Size**: 6
 - **Learning Rate**: 1e-3 (Using the Adam optimizer)
 - **Dataset Split**: Random train-test split with 80% training data and 20% testing data.
-- **Loss**: MSE Loss (first model), CE Loss )
+- **Loss**: MSE Loss (first model), CE Loss (second model))
 
 ### Trials
 
-A total of 10 trials were conducted, yielding the following results (model 1):
+Model 1:
+
+```
+input tensor([[81., 82., 83.]])
+target tensor([[82., 83., 84.]])
+output tensor([[82, 83, 84]])
+loss 2.281102388224099e-05
+input tensor([[7., 8., 9.]])
+target tensor([[ 8.,  9., 10.]])
+output tensor([[ 8,  9, 10]])
+loss 2.49348086072132e-05
+input tensor([[31., 32., 33.]])
+target tensor([[32., 33., 34.]])
+output tensor([[32, 33, 34]])
+loss 2.6588484615786e-05
+input tensor([[87., 88., 89.]])
+target tensor([[88., 89., 90.]])
+output tensor([[88, 89, 90]])
+loss 4.603876732289791e-05
+input tensor([[96., 97., 98.]])
+target tensor([[97., 98., 99.]])
+output tensor([[97, 98, 63]])
+loss 0.01914927549660206
+input tensor([[3., 4., 5.]])
+target tensor([[4., 5., 6.]])
+output tensor([[4, 5, 6]])
+loss 1.5907555280136876e-05
+input tensor([[34., 35., 36.]])
+target tensor([[35., 36., 37.]])
+output tensor([[35, 36, 37]])
+loss 2.6028270440292545e-05
+input tensor([[73., 74., 75.]])
+target tensor([[74., 75., 76.]])
+output tensor([[74, 75, 76]])
+loss 3.282587567809969e-05
+input tensor([[28., 29., 30.]])
+target tensor([[29., 30., 31.]])
+output tensor([[29, 30, 31]])
+loss 2.0435010810615495e-05
+input tensor([[52., 53., 54.]])
+target tensor([[53., 54., 55.]])
+output tensor([[53, 54, 55]])
+loss 3.404177914489992e-05
+input tensor([[68., 69., 70.]])
+target tensor([[69., 70., 71.]])
+output tensor([[69, 70, 71]])
+loss 2.4823764761094935e-05
+input tensor([[75., 76., 77.]])
+target tensor([[76., 77., 78.]])
+output tensor([[76, 77, 78]])
+loss 4.977876233169809e-05
+input tensor([[65., 66., 67.]])
+target tensor([[66., 67., 68.]])
+output tensor([[66, 67, 68]])
+loss 1.2659546882787254e-05
+input tensor([[55., 56., 57.]])
+target tensor([[56., 57., 58.]])
+output tensor([[56, 57, 58]])
+loss 2.1304467736626975e-05
+input tensor([[71., 72., 73.]])
+target tensor([[72., 73., 74.]])
+output tensor([[72, 73, 74]])
+loss 3.13459531753324e-05
+input tensor([[17., 18., 19.]])
+target tensor([[18., 19., 20.]])
+output tensor([[18, 19, 20]])
+loss 1.9536642867024057e-05
+input tensor([[48., 49., 50.]])
+target tensor([[49., 50., 51.]])
+output tensor([[49, 50, 51]])
+loss 1.5370242181234062e-05
+input tensor([[0., 1., 2.]])
+target tensor([[1., 2., 3.]])
+output tensor([[75,  2,  3]])
+loss 0.009817713871598244
+input tensor([[60., 61., 62.]])
+target tensor([[61., 62., 63.]])
+output tensor([[61, 62, 63]])
+loss 1.8827344320015982e-05
+input tensor([[84., 85., 86.]])
+target tensor([[85., 86., 87.]])
+output tensor([[85, 86, 87]])
+loss 1.8344977434026077e-05
+```
+
+Model 2:
 
 ```
 Test Accuracy: 99.92\%
@@ -99,11 +184,7 @@ target 5.0
 output 5.037868499755859
 ```
 
-(model 2):
-
 ### Discussion
 
-- The chosen model demonstrates excellent performance without the need for an extensive hyperparameter search.
-- Initially, the model involved using the SRU as a language model (sequence-to-sequence) and training on the one-hot-encoding of the 3-number sequence. We originally implemented it like this, but decided to deprecate it, as this method makes more sense for training on text corpuses, in which there is a possibility that the subsequent word takes on more than one value. Here, we have a fixed outcome in counting sequences, so the training set and the test set would contain overlaps (i.e. we would have [1, 2, 3] -> [2, 3, 4] and take the output as 4. But there is no variation in this since the SRU has memory, so it is 100% accurate after one training epoch. In a text, we could have "I have a dog" or "I ate a sandwich," so predicting the next word has some non-unitary probability of success associated with the task). To remedy this train-test independence issue and still achieve good results, we could allow for all the elements in the sequence to be seen at least once in the training set (i.e. [1, 2, 3] -> [2, 3, 4] and [4, 5, 6] -> [5, 6, 7] were in the training sequence, whilst [2, 3, 4]->[3, 4, 5] were in the test sequence), but ensure that the two sets are mutually exclusive. However, ultimately, the objective is to train the model to count, so the chosen model architecture felt more fitting, as we could achieve great results without encoding and with random train-test splits and requires significantly less computational cost due to sequence length of 1 rather than 100. Furthemore, this allows us to choose a larger hidden/output layer size.
-- To use the second, one-hot-encoding method of training, use 'CountingDatasetEmbeddings' and 'SRU' as the model, as well as CE Loss (Cross Entropy Loss) rather than MSE Loss.
-- An alternative model architecture without the fully-connected layer (but the same input-output format) was also evaluated and performed worse. This performance drop is attributed to the limited capacity with only a single hidden neuron in each hidden layer. With 16 hidden layers, it performs comparatively.
+- The models demonstrate decent performance pre-hyperparameter search.
+- The first model uses SRU as a language model (sequence-to-sequence) and trains on the one-hot-encoding of the 3-number sequence. The second uses SRU + a fully-connected layer and trains on the raw number sequence. The former model, without the fully-connected layer, makes more errors than the one with. Fine-tuning of the model would certainly result in higher accuracy values. However, considering number of mistakes is small across runs, this demonstrates the SRU's ability to "learn how to count."
